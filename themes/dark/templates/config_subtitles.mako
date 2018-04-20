@@ -3,10 +3,6 @@
     import json
     from medusa import subtitles
     from medusa import app
-
-    services = []
-    for service in subtitles.sorted_service_list():
-        services.append(service)
 %>
 <%block name="scripts">
 <script>
@@ -20,7 +16,7 @@ const startVue = () => {
         data() {
             return {
                 header: 'Subtitles',
-                services: JSON.parse('${json.dumps(services)}')
+                services: JSON.parse('${json.dumps(subtitles.sorted_service_list())}')
             };
         },
         computed: {
