@@ -104,7 +104,7 @@ const startVue = () => {
                             Select the folder you wish to save your backup file to:
                             <br><br>
                             <input v-model="backup.dir" type="text" name="backupDir" id="backupDir" class="form-control input-sm input350"/>
-                            <input @click="runBackup" disabled="backup.disabled" class="btn btn-inline" type="button" value="Backup" id="Backup" />
+                            <input @click="runBackup" :disabled="backup.disabled" class="btn btn-inline" type="button" value="Backup" id="Backup" />
                             <br>
                         </div>
                         <div v-html="backup.status" class="Backup" id="Backup-result"></div>
@@ -120,7 +120,7 @@ const startVue = () => {
                             Select the backup file you wish to restore:
                             <br><br>
                             <input v-model="restore.file" type="text" name="backupFile" id="backupFile" class="form-control input-sm input350"/>
-                            <input @click="runRestore" disabled="restore.disabled" class="btn btn-inline" type="button" value="Restore" id="Restore" />
+                            <input @click="runRestore" :disabled="restore.disabled" class="btn btn-inline" type="button" value="Restore" id="Restore" />
                             <br>
                         </div>
                         <div v-html="restore.status" class="Restore" id="Restore-result"></div>
