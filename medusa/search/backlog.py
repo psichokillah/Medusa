@@ -6,8 +6,6 @@ from __future__ import unicode_literals
 import datetime
 import logging
 import threading
-from builtins import object
-from builtins import str
 
 from medusa import app, common, db, scheduler, ui
 from medusa.helper.common import episode_num

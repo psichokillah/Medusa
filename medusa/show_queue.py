@@ -19,7 +19,6 @@ from __future__ import unicode_literals
 
 import os
 import traceback
-from builtins import object
 
 from imdbpie.exceptions import ImdbAPIError
 

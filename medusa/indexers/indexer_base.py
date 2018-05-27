@@ -11,8 +11,6 @@ import os
 import tempfile
 import time
 import warnings
-from builtins import object
-from builtins import str
 from operator import itemgetter
 
 from medusa import statistics as stats

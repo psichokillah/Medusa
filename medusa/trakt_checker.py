@@ -6,8 +6,6 @@ from __future__ import unicode_literals
 import datetime
 import logging
 import time
-from builtins import object
-from builtins import str
 
 from medusa import app, db, ui
 from medusa.common import Quality, SKIPPED, WANTED

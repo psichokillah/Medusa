@@ -18,8 +18,6 @@
 
 from __future__ import unicode_literals
 
-from builtins import object
-from builtins import str
 from datetime import date, timedelta
 from operator import itemgetter
 
