@@ -11,8 +11,7 @@ MEDUSA.config.index = function() {
             }
         }).then(response => {
             log.info(response);
-            // `true` invalidates cache
-            window.location.reload(true);
+            window.location.reload();
         }).catch(err => {
             log.error(err);
         });

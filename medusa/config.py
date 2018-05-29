@@ -39,6 +39,8 @@ from requests.compat import urlsplit
 from six import iteritems, string_types, text_type
 from six.moves.urllib.parse import urlunsplit, uses_netloc
 
+from tornado.web import StaticFileHandler
+
 log = BraceAdapter(logging.getLogger(__name__))
 log.logger.addHandler(logging.NullHandler())
 
@@ -503,6 +505,9 @@ def change_theme(theme_name):
         rule.target_kwargs['path'] = new_path
 
         log.debug('Changed {old} to {new}', {'old': old_path, 'new': new_path})
+
+    # Reset cache
+    StaticFileHandler.reset()
 
     return True
 
