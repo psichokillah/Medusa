@@ -473,6 +473,40 @@ def change_remove_from_client(new_state):
         log.info(u'Stopping TORRENTCHECKER thread')
 
 
+def change_theme(theme_name):
+    """
+    Hot-swap theme.
+
+    :param theme_name: New theme name
+    """
+    if theme_name == app.THEME_NAME:
+        log.debug('New theme name "{new}" is same as old, not switching themes.', {'new': theme_name})
+        return True
+
+    old_theme_name = app.THEME_NAME
+    old_data_root = os.path.join(app.DATA_ROOT, old_theme_name)
+
+    app.THEME_NAME = theme_name
+    app.THEME_DATA_ROOT = os.path.join(app.DATA_ROOT, theme_name)
+
+    static_file_handlers = app.instance.web_server.app.static_file_handlers
+
+    log.info('Switching theme from "{old}" to "{new}"', {'old': old_theme_name, 'new': theme_name})
+
+    for rule in static_file_handlers.target.rules:
+        if old_data_root not in rule.target_kwargs['path']:
+            # Skip other static file handlers
+            continue
+
+        old_path = rule.target_kwargs['path']
+        new_path = old_path.replace(old_data_root, app.THEME_DATA_ROOT)
+        rule.target_kwargs['path'] = new_path
+
+        log.debug('Changed {old} to {new}', {'old': old_path, 'new': new_path})
+
+    return True
+
+
 def CheckSection(CFG, sec):
     """ Check if INI section exists, if not create it """
 
