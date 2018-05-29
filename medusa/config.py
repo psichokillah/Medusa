@@ -482,8 +482,7 @@ def change_theme(theme_name):
     :param theme_name: New theme name
     """
     if theme_name == app.THEME_NAME:
-        log.debug('New theme name "{new}" is same as old, not switching themes.', {'new': theme_name})
-        return True
+        return False
 
     old_theme_name = app.THEME_NAME
     old_data_root = os.path.join(app.DATA_ROOT, old_theme_name)
